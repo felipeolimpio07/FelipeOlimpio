@@ -1,0 +1,29 @@
+/* Fundo geral */
+body {
+    background-color: #1f104f;
+    color: #ffffff;
+  }
+  
+  /* Elementos principais */
+  .section,
+  .footer {
+    background-color: transparent;
+  }
+  
+  /* Caixas dos projetos */
+  .box {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Botões */
+  a.button.is-link {
+    background-color: #00d8ff;
+    border-color: transparent;
+  }
+  
+  a.button.is-link:hover {
+    background-color: #00b0cc;
+  }
+  
