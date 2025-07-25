@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Botão Fugitivo</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    #fugitivo {
+      position: absolute;
+      padding: 10px 20px;
+      background-color: crimson;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <button id="fugitivo">Clique aqui!</button>
+
+  <script>
+    const btn = document.getElementById('fugitivo');
+
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      const btnX = btn.offsetLeft + btn.offsetWidth / 2;
+      const btnY = btn.offsetTop + btn.offsetHeight / 2;
+      const dist = Math.hypot(mouseX - btnX, mouseY - btnY);
+
+      if (dist < 100) {
+        const angle = Math.atan2(mouseY - btnY, mouseX - btnX);
+        const moveX = Math.cos(angle) * -100;
+        const moveY = Math.sin(angle) * -100;
+
+        let newX = btn.offsetLeft + moveX;
+        let newY = btn.offsetTop + moveY;
+
+        // Impede que o botão saia da tela
+        newX = Math.max(0, Math.min(window.innerWidth - btn.offsetWidth, newX));
+        newY = Math.max(0, Math.min(window.innerHeight - btn.offsetHeight, newY));
+
+        btn.style.left = `${newX}px`;
+        btn.style.top = `${newY}px`;
+      }
+    });
+  </script>
+</body>
+</html>
